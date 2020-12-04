@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="webjars\bootstrap\4.3.1\css\bootstrap.min.css.gz">
+    <title>Main page</title>
+</head>
+<body>
+<div class="container text-center">
+    <div>
+        <form th:action="@{/logout}" method="post">
+            <p>
+                Witaj<b>[[${#request.userPrincipal.principal.fullName}]]</b>
+            </p>
+            <input type="submit" value="Wyloguj"/>
+        </form>
+    </div>
+    <h1>Przeglądaj wydarzenia!</h1>
+</div>
+<div>
+    <h3>
+        <a th:href="@{/events}">Przeglądaj wszystkie wydarzenia</a>
+        <a th:href="@{/user}">Profil</a>
+        <a th:href="@{/callendar}">Kalendarz</a>
+        <a th:href="@{/my_events}">Moje wydarzenia</a>
+    </h3>
+    <button th:href="@{/add_event}">Dodaj wydarzenie</button>
+</div>
+</br>
+<div>
+    <button th:href="@{/teatr}">Teatr</button>
+    <button th:href="@{/opera}">Opera</button>
+    <button th:href="@{/balet}">Balet</button>
+    <button th:href="@{/kino}">Kino</button>
+    <button th:href="@{/koncert}">Koncert</button>
+    <button th:href="@{/sport}">Sport</button>
+    <button th:href="@{/klub}">Klub</button>
+    <button th:href="@{/wystawa}">Wystawa</button>
+    <button th:href="@{/edukacja}">Edukacja</button>
+    <button th:href="@{/inne}">Inne</button>
+</div>
+</br>
+<div>
+    <table class="table table-striped table-bordered">
+        <thead thead="thead-dark">
+        <tr>
+            <th>Nazwa wydarzenia</th>
+            <th>Typ</th>
+            <th>Opis</th>
+            <th>Miejsce</th>
+            <th>Adres</th>
+            <th>Data</th>
+            <th>Godzina</th>
+            <th>Czy biletowane</th>
+            <th>Ilość dostępnych biletów</th>
+            <th>Cena biletu</th>
+            <th>Czy 18+</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="event: ${listEvents}">
+            <td th:text="${event.name}">Nazwa wydarzenia</td>
+            <td th:text="${event.type}">Typ</td>
+            <td th:text="${event.description}">Opis</td>
+            <td th:text="${event.place}">Miejsce</td>
+            <td th:text="${event.adress}">Adres</td>
+            <td th:text="${event.date}">Data</td>
+            <td th:text="${event.startHour}">Godzina</td>
+            <td th:text="${event.ifTickects}">Czy biletowane</td>
+            <td th:text="${event.numberOfTickets}">Ilość dostępnych biletów</td>
+            <td th:text="${event.ticketPrice}">Cena biletu</td>
+            <td th:text="${event.ifForAdults}">Czy 18+</td>
+            <td button th:href="@{/details}">Szczegóły</td>
+            <td button th:href="@{/addToCallendar}">Dodaj do kalendarza</td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+</body>
+</html>

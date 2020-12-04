@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="webjars\bootstrap\4.3.1\css\bootstrap.min.css.gz">
+    <title>Main page</title>
+</head>
+<body>
+<div class="container">
+<h1>Przeglądaj wydarzenia!</h1>
+</div>
+<div>
+    <h3>
+        <a th:href="@{/events}">Przeglądaj wszystkie wydarzenia</a>
+        <a th:href="@{/register}">Rejestracja</a>
+        <a th:href="@{/login}">Zaloguj się</a>
+    </h3>
+</div>
+</body>
+</html>
